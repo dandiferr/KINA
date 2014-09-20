@@ -2,10 +2,11 @@
 import serial
 from collections import Counter
 import re
-import itertools 
+import itertools
+import time
 
 
-#arduino = serial.Serial('COM5', 115200, timeout=.1)
+arduino = serial.Serial('COM5', 115200, timeout=.1)
 
 arrayList = [1]
 all_words=Counter()
@@ -43,14 +44,16 @@ def goHam():
     arrayList = []
     num = -1
     while num != 0:
-        num = int(raw_input("put your input "))
-        if int(num) != 1:
-            arrayList.append(num)
-        elif int(num) == 1:
-            print 'there is one'
-        try_it(*arrayList)
-        if int(num) == 1:
-            del arrayList[:]
+        data = arduino.readline()[:-2]
+        if data:
+            num = int(data)
+            if num == 0:
+                True
+            if num != 1:
+                arrayList.append(num)
+                try_it(*arrayList)
+            elif num == 1:
+                del arrayList[:]
 
 while 1> 0:
     goHam()
