@@ -59,7 +59,7 @@ def get_word(*word_calculation):
         while not moving_on:
             second_input = arduino.readline()[:-2]
             if second_input:
-                num = int(second_input)
+                num = int(second_input)]
                 if num == 1:
                     moving_on = True
                     print ET.tostring(root, encoding="us-ascii", method="xml")
@@ -77,39 +77,38 @@ def get_word(*word_calculation):
         moving_on = False
     return ""
 
+while 1 > 0:
 
-
-root = ET.Element("T9Response")
-curString = ET.SubElement(root, "CurString")
-curString.text = ""
-curWord = ET.SubElement(root, "CurWord")
-isInRotation = ET.SubElement(root, "IsInRotation")
-isInRotation.text = "0"
-done = False
-while not done:
-    arrayList = []
-    num = -1
-    constructed_string = ""
-    while num != 0:
-        data = arduino.readline()[:-2]
-        if data:
-            num = int(data)
-            if num == 0:
-                True
-            if num != 1:
-                arrayList.append(num)
-                curWord.text = try_it(*arrayList)
-                print ET.tostring(root, encoding="us-ascii", method="xml")
-            elif num == 1:
-                csold = constructed_string
-                newWord = get_word(*arrayList)
-                constructed_string = constructed_string + newWord + " "
-                curString.text = constructed_string
-                isInRotation.text = "0"
-                if len(csold) == len(constructed_string) - 1:
-                    break
-                print ET.tostring(root, encoding="us-ascii", method="xml")
-                del arrayList[:]
-    done = True
-
-print ET.tostring(root, encoding="us-ascii", method="xml")
+    root = ET.Element("T9Response")
+    curString = ET.SubElement(root, "CurString")
+    curString.text = ""
+    curWord = ET.SubElement(root, "CurWord")
+    isInRotation = ET.SubElement(root, "IsInRotation")
+    isInRotation = "0"
+    done = False
+    while not done:
+        arrayList = []
+        num = -1
+        constructed_string = ""
+        while num != 0:
+            data = arduino.readline()[:-2]
+            if data:
+                num = int(data)
+                if num == 0:
+                    True
+                if num != 1:
+                    arrayList.append(num)
+                    curWord.text = try_it(*arrayList)
+                    print ET.tostring(root, encoding="us-ascii", method="xml")
+                elif num == 1:
+                    csold = constructed_string
+                    newWord = get_word(*arrayList)
+                    constructed_string = constructed_string + newWord + " "
+                    curString.text = constructed_string
+                    isInRotation.text = "0"
+                    if len(csold) == len(constructed_string) - 1:
+                        break
+                    print ET.tostring(root, encoding="us-ascii", method="xml")
+                    del arrayList[:]
+        done = True
+    print ET.tostring(root, encoding="us-ascii", method="xml")
