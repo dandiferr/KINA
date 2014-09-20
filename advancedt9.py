@@ -1,9 +1,11 @@
+#Code Aadapted from http://stackoverflow.com/questions/12074963/t9-system-to-numpad
+
 from collections import Counter
 import re
 import itertools 
 
 all_words=Counter()
-n2l={2:'qwer',3:'tyuilp',4:'asdf',5:'ghjko',6:'',7:'',8:'',9:''}
+n2l={2:'qwerty',3:'uilpgh',4:'asdfko',5:'zxcvbnm',6:'',7:'',8:'',9:''}
 #n2l={2:'abcxyz',3:'defghij',4:'ghi',5:'jkl',6:'mno',7:'pqrs',8:'tuv',9:''}
 
 with open('dictionary.txt','r') as di:  # UNIX 250k unique word list 
@@ -36,5 +38,8 @@ def try_it(*nums):
         
 
 try_it(3, 5, 5, 3)
+try_it(3, 4, 5, 3)
+try_it(3, 5, 4, 3)
+try_it(2, 2, 3, 4)
 try_it(3, 4, 3)
 
