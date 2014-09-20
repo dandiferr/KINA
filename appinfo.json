@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "johnnysslave@gmail.com",
+    "longName": "Kina",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "shortName": "Kina",
+    "uuid": "0e7b49ba-28af-4021-9a0f-f8db083ee11a",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
