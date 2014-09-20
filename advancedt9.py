@@ -37,28 +37,34 @@ def try_it(*nums):
         if i<=n:
             print ('\t{:2}:  "{}" -- weighted {}'.format(i, word, all_words[word]))
 
-            
+def goHam():
+    arrayList = []
+    num = 6
+    while num != 0:
+        num = raw_input("put your input ")
+        if int(num) != 1:
+            arrayList.append(num)
+        elif int(num) == 1:
+            print 'there is one'
+        if len(arrayList) == 1:
+            try_it(int(arrayList[0]))
+        if len(arrayList) == 2:
+             try_it(int(arrayList[0]), int(arrayList[1]))
+        if len(arrayList) == 3:
+             try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]))
+        if len(arrayList) == 4:
+            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]))
+        if len(arrayList) == 5:
+            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]))
+        if len(arrayList) == 6:
+            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]))
+        if len(arrayList) == 7:
+            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]))    
+        if len(arrayList) == 8: 
+            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]), int(arrayList[7]))
+        if int(num) == 1:
+            del arrayList[:]
 
-num = 6
-while num != 0:
-    num = raw_input("put your input ")
-    arayList = list(num)
-    arrayList = [int(i) for i in arayList]
-    
-    if len(arrayList) == 1:
-        try_it(int(arrayList[0]))
-    if len(arrayList) == 2:
-         try_it(int(arrayList[0]), int(arrayList[1]))
-    if len(arrayList) == 3:
-         try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]))
-    if len(arrayList) == 4:
-        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]))
-    if len(arrayList) == 5:
-        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]))
-    if len(arrayList) == 6:
-        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]))
-    if len(arrayList) == 7:
-        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]))    
-    if len(arrayList) == 8:
-        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]), int(arrayList[7]))
+while 1> 0:
+    goHam()
 
