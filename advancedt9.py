@@ -4,6 +4,8 @@ from collections import Counter
 import re
 import itertools 
 
+
+arrayList = [1]
 all_words=Counter()
 n2l={2:'qwerty',3:'uilpgh',4:'asdfko',5:'zxcvbnm',6:'',7:'',8:'',9:''}
 #n2l={2:'abcxyz',3:'defghij',4:'ghi',5:'jkl',6:'mno',7:'pqrs',8:'tuv',9:''}
@@ -35,11 +37,28 @@ def try_it(*nums):
         if i<=n:
             print ('\t{:2}:  "{}" -- weighted {}'.format(i, word, all_words[word]))
 
-        
+            
 
-try_it(3, 5, 5, 3)
-try_it(3, 4, 5, 3)
-try_it(3, 5, 4, 3)
-try_it(2, 2, 3, 4)
-try_it(3, 4, 3)
+num = 6
+while num != 0:
+    num = raw_input("put your input ")
+    arayList = list(num)
+    arrayList = [int(i) for i in arayList]
+    
+    if len(arrayList) == 1:
+        try_it(int(arrayList[0]))
+    if len(arrayList) == 2:
+         try_it(int(arrayList[0]), int(arrayList[1]))
+    if len(arrayList) == 3:
+         try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]))
+    if len(arrayList) == 4:
+        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]))
+    if len(arrayList) == 5:
+        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]))
+    if len(arrayList) == 6:
+        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]))
+    if len(arrayList) == 7:
+        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]))    
+    if len(arrayList) == 8:
+        try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]), int(arrayList[7]))
 
