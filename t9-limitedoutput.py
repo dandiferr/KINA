@@ -33,12 +33,13 @@ def t9(*nums):
 def try_it(*nums):
     s=set(t9(*nums))
     n=10
-    print('({}) produces {:,} words. Top {}:'.format(','.join(str(i) for i in nums),
-            len(s),min(n,len(s))))
-    for i, word in enumerate(
-          [w for w in sorted(all_words,key=all_words.get, reverse=True) if w in s],1):
-        if i<=n:
-            print ('\t{:2}:  "{}" -- weighted {}'.format(i, word, all_words[word]))
+    wordlist = []
+    for i, word in enumerate([w for w in sorted(all_words,key=all_words.get, reverse=True) if w in s],1):
+        wordlist.append(word)
+    if len(wordlist) > 0:
+        print wordlist[0]
+    else:
+        print "No matches, continue"
 
 def get_word(*word_calculation):
     if (len(word_calculation) == 0):
@@ -49,8 +50,6 @@ def get_word(*word_calculation):
     wordlist = []
     for i, word in enumerate([w for w in sorted(all_words,key=all_words.get, reverse=True) if w in s],1):
         wordlist.append(word)
-        print word
-    print len(wordlist)
     print "Press 4 to move down, press 1 to move up. Press 2 or 3 to select the word."
     moving_on = False
     i = 0
@@ -59,6 +58,7 @@ def get_word(*word_calculation):
             second_input = arduino.readline()[:-2]
             if second_input:
                 num = int(second_input)
+                print wordlist[i]
                 if num == 1:
                     moving_on = True
                 elif num == 4:
@@ -72,6 +72,7 @@ def get_word(*word_calculation):
                     return wordlist[i]
         i += 1
         moving_on = False
+    return ""
 
 
 
