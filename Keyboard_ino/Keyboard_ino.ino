@@ -35,5 +35,13 @@ void loop() {
            delay(10);
         }
       }
+      else if(digitalRead(6) == 1)
+      {
+        Serial.println("5");
+        while(digitalRead(6) == 1)
+        {
+           delay(10);
+        }
+      }
       delay(100);
 }
