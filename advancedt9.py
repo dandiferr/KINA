@@ -1,9 +1,11 @@
 #Code Aadapted from http://stackoverflow.com/questions/12074963/t9-system-to-numpad
-
+import serial
 from collections import Counter
 import re
 import itertools 
 
+
+#arduino = serial.Serial('COM5', 115200, timeout=.1)
 
 arrayList = [1]
 all_words=Counter()
@@ -39,32 +41,16 @@ def try_it(*nums):
 
 def goHam():
     arrayList = []
-    num = 6
+    num = -1
     while num != 0:
-        num = raw_input("put your input ")
+        num = int(raw_input("put your input "))
         if int(num) != 1:
             arrayList.append(num)
         elif int(num) == 1:
             print 'there is one'
-        if len(arrayList) == 1:
-            try_it(int(arrayList[0]))
-        if len(arrayList) == 2:
-             try_it(int(arrayList[0]), int(arrayList[1]))
-        if len(arrayList) == 3:
-             try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]))
-        if len(arrayList) == 4:
-            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]))
-        if len(arrayList) == 5:
-            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]))
-        if len(arrayList) == 6:
-            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]))
-        if len(arrayList) == 7:
-            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]))    
-        if len(arrayList) == 8: 
-            try_it(int(arrayList[0]), int(arrayList[1]), int(arrayList[2]), int(arrayList[3]), int(arrayList[4]), int(arrayList[5]), int(arrayList[6]), int(arrayList[7]))
+        try_it(*arrayList)
         if int(num) == 1:
             del arrayList[:]
 
 while 1> 0:
     goHam()
-
