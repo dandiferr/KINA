@@ -11,7 +11,7 @@ arduino = serial.Serial('COM4', 115200, timeout=.1)
 
 s = socket.socket()         # Create a socket object
 host = socket.gethostname() # Get local machine name
-port = 15669                # Reserve a port for your service.
+port = 16969                # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
 s.listen(5)                 # Now wait for client connection.
