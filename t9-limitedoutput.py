@@ -3,20 +3,22 @@ import serial
 from collections import Counter
 import re
 import itertools
+import math
 import time
 
 
-arduino = serial.Serial('COM4', 115200, timeout=.1)
+
+arduino = serial.Serial('COM5', 115200, timeout=.1)
 
 arrayList = [1]
 all_words=Counter()
 n2l={2:'qwerty',3:'uilpgh',4:'asdfko',5:'zxcvbnm',6:'',7:'',8:'',9:''}
 #n2l={2:'abcxyz',3:'defghij',4:'ghi',5:'jkl',6:'mno',7:'pqrs',8:'tuv',9:''}
 
-with open('dictionary.txt','r') as di:  # UNIX 250k unique word list 
+with open('google-10000-english.txt','r') as di:  # UNIX 250k unique word list 
      all_words.update({line.strip() for line in di if len(line) < 6}) 
 
-with open('holmes.txt','r') as fin:   # http://www.gutenberg.org/ebooks/1661.txt.utf-8 (this is used for weight)
+with open('holmes.txt','r') as fin:   # http: //www.gutenberg.org/ebooks/1661.txt.utf-8 (this is used for weight)
     for line in fin:
          all_words.update([word.lower() for word in re.findall(r'\b\w+\b',line)])
 
@@ -50,21 +52,24 @@ def get_word(*word_calculation):
     wordlist = []
     for i, word in enumerate([w for w in sorted(all_words,key=all_words.get, reverse=True) if w in s],1):
         wordlist.append(word)
-    print "Press 4 to move down, press 1 to move up. Press 2 or 3 to select the word."
+    if len(wordlist) > 0:
+        print "Press 1 to confirm, 2 to go back, 3 to rotate, 4 to end sentence"
     moving_on = False
+
     i = 0
-    while (not selected) and (i < len(wordlist)): 
+    while (not selected) and (i < len(wordlist)):# and (len(wordlist)%math.fabs(i) >= 0 | i ==0): 
         while not moving_on:
             second_input = arduino.readline()[:-2]
             if second_input:
                 num = int(second_input)
                 print wordlist[i]
-                if num == 1:
-                    moving_on = True
-                elif num == 4:
+                if num == 1 & len(wordlist) == 0:
+                    True
+                elif num == 3:
+
                     i -= 2
                     moving_on = True
-                elif num == 3:
+                elif num == 4:
                     selected = True
                     return wordlist[i] + ". "
                 else:
@@ -72,6 +77,9 @@ def get_word(*word_calculation):
                     return wordlist[i]
         i += 1
         moving_on = False
+        if i != 0:
+            if len(wordlist)%math.fabs(i) == len(wordlist):
+                i = 1
     return ""
 
 
@@ -92,11 +100,10 @@ while not done:
                 arrayList.append(num)
                 try_it(*arrayList)
             elif num == 1:
+                time.sleep(.5)
                 csold = constructed_string
-                constructed_string = constructed_string + get_word(*arrayList) + " "
+                constructed_string = constructed_string + get_word(*arrayList).replace(" ", "") + " "
                 print constructed_string
-                if len(csold) == len(constructed_string) - 1:
-                    break
                 del arrayList[:]
     done = True
 
