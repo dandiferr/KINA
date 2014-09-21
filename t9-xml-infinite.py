@@ -6,7 +6,6 @@ import itertools
 import time
 import xml.etree.ElementTree as ET
 
-
 arduino = serial.Serial('COM4', 115200, timeout=.1)
 
 arrayList = [1]
