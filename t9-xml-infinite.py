@@ -14,7 +14,7 @@ all_words=Counter()
 n2l={2:'qwerty',3:'uilpgh',4:'asdfko',5:'zxcvbnm',6:'',7:'',8:'',9:''}
 #n2l={2:'abcxyz',3:'defghij',4:'ghi',5:'jkl',6:'mno',7:'pqrs',8:'tuv',9:''}
 
-with open('dictionary.txt','r') as di:  # UNIX 250k unique word list 
+with open('google-10000-english.txt','r') as di:  # UNIX 250k unique word list 
      all_words.update({line.strip() for line in di if len(line) < 6}) 
 
 with open('holmes.txt','r') as fin:   # http://www.gutenberg.org/ebooks/1661.txt.utf-8 (this is used for weight)
@@ -59,7 +59,7 @@ def get_word(*word_calculation):
         while not moving_on:
             second_input = arduino.readline()[:-2]
             if second_input:
-                num = int(second_input)]
+                num = int(second_input)
                 if num == 1:
                     moving_on = True
                     print ET.tostring(root, encoding="us-ascii", method="xml")
@@ -84,7 +84,7 @@ while 1 > 0:
     curString.text = ""
     curWord = ET.SubElement(root, "CurWord")
     isInRotation = ET.SubElement(root, "IsInRotation")
-    isInRotation = "0"
+    isInRotation.text = "0"
     done = False
     while not done:
         arrayList = []

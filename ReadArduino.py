@@ -1,5 +1,5 @@
 import serial
-arduino = serial.Serial('COM5', 115200, timeout=.1)
+arduino = serial.Serial('COM4', 115200, timeout=.1)
 while True:
 	data = arduino.readline()[:-2] #the last bit gets rid of the new-line chars
 	if data:
